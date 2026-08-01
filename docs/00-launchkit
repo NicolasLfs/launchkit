@@ -1,0 +1,597 @@
+
+## O que é o LaunchKit Core?
+
+LaunchKit Core é um Starter Kit completo para SaaS, construído por quem já operou microserviços em produção (Go, RabbitMQ, Redis, PostgreSQL com réplicas, PgBouncer, observabilidade real).
+
+A proposta não é vender código.
+
+A proposta é vender **tempo economizado**, **decisões técnicas validadas em produção** e **uma experiência de desenvolvimento (DX) impecável** do primeiro `git clone` até o deploy.
+
+O objetivo é reduzir drasticamente o tempo entre:
+
+**"Ideia"**  
+↓  
+**`docker compose up`**  
+↓  
+**"SaaS online"**  
+↓  
+**"Primeiro cliente"**
+
+---
+
+# Missão
+
+Permitir que qualquer desenvolvedor full-stack consiga lançar um SaaS em produção sem perder semanas configurando infraestrutura — com uma base que já inclui o essencial e está pronta para escalar.
+
+---
+
+# Visão
+
+Ser a principal referência brasileira em Starter Kits para desenvolvimento de SaaS — começando pelo Core, expandindo para módulos especializados conforme validação do mercado.
+
+---
+
+# Filosofia
+
+Todo componente do LaunchKit Core deve responder a estas perguntas:
+
+- Resolve um problema real?
+- Economiza tempo?
+- Pode ser entendido por um desenvolvedor intermediário?
+- Possui documentação explicando **como** e **por que**?
+- Existe uma alternativa gratuita para validação?
+
+Se alguma resposta for "não", não faz parte do Core.
+
+---
+
+# Público-Alvo
+
+## Desenvolvedor Full Stack
+Já sabe programar. Quer criar um SaaS próprio. Não quer perder dias configurando infraestrutura.
+
+## Freelancer
+Precisa entregar MVPs rapidamente. Quer reutilizar uma base sólida e documentada.
+
+## Founder Técnico
+Quer validar uma ideia. Não possui equipe. Não possui orçamento para infraestrutura paga.
+
+## Indie Hacker
+Quer lançar produtos rapidamente. Busca reduzir custos ao máximo na fase de validação.
+
+---
+
+# Problema
+
+Hoje existem centenas de boilerplates. Mas eles normalmente possuem um destes problemas:
+
+- São excessivamente complexos (over-engineered).
+- São simples demais (só o "feijão com arroz", sem a "mistura").
+- Não possuem documentação explicando decisões técnicas.
+- Custam caro (US$ 199–$1.499).
+- São focados no mercado americano (inglês, stack voltada para infra gringa).
+- Assumem que o usuário possui infraestrutura paga desde o dia 1.
+- Não incluem deploy simplificado — ou só funcionam na Vercel, ou só funcionam em Docker, nunca os dois.
+
+**LaunchKit Core resolve isso oferecendo uma experiência progressiva:**
+
+- Comece local com `docker compose up` (zero config)
+- Valide com deploy na Vercel (1 comando)
+- Escale para VPS com Docker quando o MRR justificar (guia passo a passo)
+
+---
+
+# Posicionamento
+
+> Não vendemos código.  
+> Vendemos tempo.  
+> Vendemos decisões técnicas validadas em produção.  
+> Vendemos a experiência de quem já operou microserviços em escala real.
+
+---
+
+# Proposta de Valor
+
+**"Saia da ideia para um SaaS online sem perder semanas configurando infraestrutura."**
+
+Ou, de forma mais específica:
+
+**"O único starter kit onde `docker compose up` sobe dev + testes + banco + auth + Stripe local, e `vercel --prod` coloca online — com o mesmo código, documentado em português."**
+
+---
+
+Aqui está a sua anotação atualizada com a identidade verbal solicitada:
+
+# Identidade Verbal
+
+| Em vez de... | Use... |
+| :--- | :--- |
+| "Starter Kit completo" | "SaaS pronto em 5 minutos" |
+| "Documentação extensa" | "Deploy passo a passo, sem pular etapas" |
+| "Arquitetura escalável" | "Começa grátis, escala sem trocar de stack" |
+| "Docker First" | "Um comando sobe tudo — local e produção" |
+
+---
+
+# Paleta Visual
+
+| Elemento       | Cor       | Descrição                               |
+| :------------- | :-------- | :-------------------------------------- |
+| Background     | `#0A0A0A` | Quase preto                             |
+| Surface        | `#171717` | Card, sidebar                           |
+| Border         | `#262626` | Divisores                               |
+| Text primary   | `#FAFAFA` | Branco quebrado                         |
+| Text secondary | `#A1A1AA` | Zinc-400                                |
+| Accent         | `#10B981` | Emerald-500 ("go", "deploy", "sucesso") |
+| Accent hover   | `#059669` | Emerald-600                             |
+| Danger         | `#EF4444` | Red-500                                 |
+| Warning        | `#F59E0B` | Amber-500                               |
+
+---
+# Diferenciais
+
+## 1. Arquitetura real, não de demonstração
+
+Tudo pensado para produção desde o primeiro commit. Decisões técnicas baseadas em 6+ anos de experiência, incluindo 3 anos como CTO operando Go + RabbitMQ + PostgreSQL + Redis em produção.
+
+## 2. Documentação que explica "por que", não só "como"
+
+Cada decisão técnica é documentada. O dev não apenas copia — entende.
+
+## 3. Deploy simplificado: um código, dois modos
+
+- **Desenvolvimento:** `docker compose up` → tudo funciona local
+- **Produção:** `vercel --prod` → online em minutos
+- **Escalabilidade futura:** guia documentado para VPS com Docker
+
+## 4. Infraestrutura gratuita para validação
+
+Toda a stack do Core funciona com ferramentas gratuitas:
+- Docker (local)
+- GitHub (repositório + Actions)
+- Vercel (deploy + hosting)
+- Supabase ou Postgres local (banco)
+- Resend (email, 3.000/mês grátis)
+- Stripe (test mode)
+- Cloudflare (DNS + CDN)
+
+## 5. "Feijão com arroz + mistura" — o básico bem feito
+
+Não é um kit inchado com 50 features. É o essencial, mas completo:
+- Auth com MFA e Magic Link (não só Google OAuth)
+- PostgreSQL com migrations automáticas e seed (não só "conecta no banco")
+- Docker multi-stage com healthcheck (não só "funciona na minha máquina")
+- Stripe com webhooks testáveis localmente (não só "integração básica")
+- Landing page com SEO + blog (não só "página genérica")
+
+---
+
+# Princípios
+
+## Não reinventar a roda
+Utilizar soluções consolidadas e bem mantidas pela comunidade.
+
+## Docker First
+Tudo deve funcionar em Docker — dev e produção.
+
+## Local First
+O usuário deve conseguir desenvolver 100% localmente, sem depender de serviços pagos.
+
+## Free First
+Toda funcionalidade do Core deve possuir uma opção gratuita para validação.
+
+## Progressive Scaling
+Conforme o projeto cresce, o LaunchKit acompanha — com guias de migração documentados.
+
+## DX Impecável
+A experiência do desenvolvedor desde o `git clone` até o deploy deve ser fluida, previsível e bem documentada.
+
+---
+
+# Stack Técnica do Core
+
+| Camada | Tecnologia | Justificativa |
+|--------|-----------|---------------|
+| Framework | Next.js 15 (App Router) | Padrão de mercado, SSR/SSG, ecossistema maduro |
+| Linguagem | TypeScript | Type safety, DX superior, manutenibilidade |
+| Estilização | Tailwind CSS + shadcn/ui | Produtividade, consistência visual, acessibilidade |
+| Banco de Dados | PostgreSQL | Padrão para SaaS, ACID, escalável |
+| ORM | Drizzle ORM | Type-safe, leve, SQL-first, preferido em 2026 |
+| Auth | Better Auth | Tendência 2026, substitui NextAuth, suporta MFA/RBAC |
+| Pagamentos | Stripe | Padrão de mercado, webhooks robustos |
+| Email | Resend | 3.000 emails/mês gratuitos, API simples |
+| Container | Docker + Docker Compose | Dev e prod com o mesmo ambiente |
+| CI/CD | GitHub Actions | Gratuito, integrado, automação de testes e build |
+| Deploy Primário | Vercel | 1-click, serverless, gratuito para validação |
+| Deploy Secundário | VPS + Docker (guia) | Escalabilidade quando o MRR justificar |
+| Observabilidade Básica | Healthcheck + Logs estruturados | Base para futura expansão (OpenTelemetry/Grafana) |
+
+---
+
+# Funcionalidades do Core
+
+## Essenciais (incluídas)
+
+### Autenticação (Better Auth)
+- Login com Google OAuth
+- Login com GitHub OAuth
+- Magic Link (email sem senha)
+- MFA (autenticação de dois fatores)
+- RBAC básico (roles: owner, admin, member)
+- Recuperação de senha
+- Sessões seguras
+
+### Banco de Dados (PostgreSQL + Drizzle)
+- Schema type-safe com Drizzle
+- Migrations automáticas
+- Seed de dados para desenvolvimento
+- Configuração pronta para PgBouncer (connection pooling)
+- Índices otimizados para queries comuns
+
+### Dashboard
+- Layout com sidebar responsiva
+- Header com user menu
+- Página inicial com métricas básicas
+- Perfil do usuário
+- Configurações da conta
+- Gerenciamento de organização (multi-tenant básico)
+- Gerenciamento de membros da organização
+
+### Landing Page
+- Hero section otimizada para conversão
+- SEO completo (meta tags, Open Graph, sitemap)
+- Blog básico (MDX)
+- Pricing page
+- Footer com links legais
+
+### Pagamentos (Stripe)
+- Integração com checkout
+- Webhooks testáveis localmente (Stripe CLI incluso no Docker)
+- Portal de billing (gerenciamento de assinatura)
+- Planos: Free, Pro, Enterprise
+- Controle de acesso por plano
+
+### Tema
+- Claro / Escuro / Sistema
+- Persistência de preferência
+- Transições suaves
+
+### Docker
+- `docker compose up` → ambiente completo de desenvolvimento
+- Hot-reload para Next.js
+- PostgreSQL com volume persistente
+- Stripe CLI para webhooks locais
+- Healthchecks em todos os serviços
+- Multi-stage build para produção (otimizado)
+
+### CI/CD (GitHub Actions)
+- Lint e type-check em PRs
+- Testes automatizados
+- Build de produção
+- Deploy automático na Vercel (main branch)
+
+### Documentação
+- README com quickstart
+- Guia de instalação passo a passo
+- Guia de deploy (Vercel + VPS)
+- Explicações de "por que" para cada decisão técnica
+- Troubleshooting comum
+- Changelog
+
+## NÃO incluídas no Core (módulos futuros)
+
+> Estes itens são deliberadamente excluídos do Core para manter foco e simplicidade. Serão desenvolvidos como módulos pagos (Pro, Premium, Enterprise) após validação do Core.
+
+- Backend separado em Go ou NestJS
+- Mensageria (RabbitMQ, Kafka)
+- Cache distribuído (Redis)
+- Observabilidade avançada (OpenTelemetry, Grafana, tracing)
+- Multi-tenant avançado (isolation por schema/database)
+- AI integration (OpenAI, Anthropic, streaming)
+- Storage/S3 avançado (uploads, CDN)
+- Queue system (BullMQ, jobs background)
+- Advanced analytics
+- White-label / custom domains
+
+---
+
+# Estrutura do Projeto
+
+```
+launchkit-core/
+├── apps/
+│   └── web/                    # Next.js 15 (App Router)
+│       ├── app/                # Rotas e páginas
+│       ├── components/         # Componentes React
+│       ├── lib/                # Utilitários, configs
+│       ├── hooks/              # Custom hooks
+│       └── styles/             # Globals, Tailwind config
+├── packages/
+│   ├── database/               # Drizzle schema, migrations, seed
+│   ├── auth/                   # Configuração do Better Auth
+│   ├── email/                  # Templates e config Resend
+│   ├── payments/               # Integração Stripe
+│   └── config/                 # ESLint, TS, Tailwind compartilhados
+├── docker/
+│   ├── Dockerfile              # Multi-stage (dev + prod)
+│   ├── Dockerfile.dev          # Hot-reload
+│   └── docker-compose.yml      # Postgres + App + Stripe CLI
+├── scripts/
+│   ├── setup.sh                # Script de setup inicial
+│   ├── db-push.sh              # Push schema + seed
+│   └── stripe-listen.sh        # Iniciar webhook listener local
+├── .github/
+│   └── workflows/
+│       ├── ci.yml              # Lint + test + build
+│       └── deploy.yml          # Deploy Vercel
+├── docs/
+│   ├── getting-started.md
+│   ├── architecture.md
+│   ├── deploy-vercel.md
+│   ├── deploy-vps.md
+│   └── decisions/              # "Por que escolhemos X"
+├── .env.example
+├── .env.local.example
+├── package.json
+├── turbo.json                  # Monorepo leve (opcional)
+└── README.md
+```
+
+---
+
+# Fluxo do Usuário (Primeiros 5 Minutos)
+
+```bash
+# 1. Clone
+git clone https://github.com/seu-user/launchkit-core.git
+cd launchkit-core
+
+# 2. Configure variáveis
+cp .env.example .env
+# Edite .env com suas credenciais (Google OAuth, Stripe test, Resend)
+
+# 3. Suba tudo
+docker compose up
+
+# 4. Push do schema e seed
+npm run db:push
+npm run db:seed
+
+# 5. Acesse
+# App: http://localhost:3000
+# Postgres: localhost:5432
+# Stripe webhook listener: já rodando no container
+```
+
+**Deploy em produção (Vercel):**
+```bash
+vercel --prod
+# Ou: push na branch main → GitHub Actions deploya automaticamente
+```
+
+**Deploy em produção (VPS — guia documentado):**
+```bash
+# Guia passo a passo em docs/deploy-vps.md
+# Inclui: Docker Compose prod, SSL (Let's Encrypt), reverse proxy, backups
+```
+
+---
+
+# Estratégia de Negócio
+
+## Objetivo Inicial
+
+Gerar **R$ 2.000–R$ 5.000/mês** com o Core nos primeiros 3 meses.
+
+## Fases
+
+### Fase 1: Construção em Público (Semanas 1–6)
+- Desenvolver o Core com transparência
+- Publicar conteúdo técnico no LinkedIn (arquitetura, decisões, erros)
+- Criar audiência e validar interesse
+- **Não vender ainda** — apenas construir e documentar
+
+### Fase 2: Pré-Venda (Semanas 6–8)
+- Abrir lista de espera
+- Oferecer **Early Access** a R$ 97 para os primeiros 20 compradores
+- Coletar feedback intensivo
+- Ajustar o produto com base no uso real
+
+### Fase 3: Lançamento Oficial (Semana 8+)
+- Preço oficial: **R$ 197–R$ 297**
+- Venda via Gumroad / Stripe
+- Entrega: acesso ao repositório privado + documentação
+- Suporte: Discord/Slack privado para compradores
+
+## Modelo de Receita (Futuro)
+
+> Após validação do Core, expandir para:
+
+| Produto | Preço | O que inclui |
+|---------|-------|--------------|
+| **LaunchKit Core** | R$ 197–R$ 297 | Starter Kit completo (atual) |
+| **LaunchKit Pro** | R$ 397 | Core + Payments avançado + Queue + Storage |
+| **LaunchKit Enterprise** | R$ 597+ | Pro + Go/NestJS backend + Redis + RabbitMQ + Observabilidade |
+| **Módulos Avulsos** | R$ 49–R$ 97 | AI, Advanced Analytics, White-label, etc. |
+| **Consultoria/Mentoria** | R$ 300–R$ 500/h | Setup personalizado, code review, arquitetura |
+
+---
+
+# Estratégia de Marketing
+
+## Princípio Central
+
+**Todo desenvolvimento será público.**
+
+## Objetivo
+
+Criar audiência antes do produto existir. Vender confiança, não código.
+
+## Canais
+
+### LinkedIn (Principal)
+- Construir em público: mostrar decisões, arquitetura, problemas, soluções
+- Nunca vender diretamente. Sempre ensinar.
+- Finalizar posts com perguntas para engajamento
+- Publicar GIFs, vídeos curtos, snippets de código, números reais
+
+### Calendário de Conteúdo Semanal
+
+| Dia | Tema | Tipo de Conteúdo |
+|-----|------|-----------------|
+| Segunda | Arquitetura | Decisões técnicas, trade-offs |
+| Terça | Backend | Banco, ORM, queries, otimização |
+| Quarta | Docker/Infra | Compose, deploy, CI/CD |
+| Quinta | Banco de Dados | Schema, índices, tuning |
+| Sexta | Deploy/Prod | Vercel, VPS, custos reais |
+| Sábado | UI/UX | Componentes, acessibilidade, tema |
+| Domingo | Resumo da semana | Aprendizados, próximos passos |
+
+### GitHub
+- Repositório público com README atrativo
+- Issues abertas para feedback da comunidade
+- Discussions para dúvidas e sugestões
+- Stars e forks como métrica de validação
+
+---
+
+# Roadmap do Core
+
+> **Duração estimada: 6–8 semanas** (realista, não otimista)
+
+## Semana 1: Fundação
+- [ ] Repositório GitHub com estrutura base
+- [ ] Docker Compose funcional (Next.js + PostgreSQL)
+- [ ] Configuração TypeScript, Tailwind, shadcn/ui
+- [ ] README com visão e quickstart inicial
+- [ ] Primeiro post no LinkedIn anunciando o projeto
+
+## Semana 2: Banco de Dados e Auth
+- [ ] Schema PostgreSQL com Drizzle (type-safe)
+- [ ] Migrations automáticas
+- [ ] Seed de dados para desenvolvimento
+- [ ] Better Auth configurado (Google OAuth, GitHub OAuth)
+- [ ] Magic Link funcionando
+- [ ] Documentação: "Por que escolhemos Better Auth"
+
+## Semana 3: Dashboard e UI
+- [ ] Layout base (sidebar + header)
+- [ ] Dashboard inicial com métricas
+- [ ] Perfil do usuário
+- [ ] Configurações da conta
+- [ ] Organização e gerenciamento de membros
+- [ ] Tema claro/escuro
+- [ ] Documentação de componentes
+
+## Semana 4: Landing Page e SEO
+- [ ] Landing page otimizada (Hero, Features, Pricing, CTA)
+- [ ] SEO completo (meta tags, Open Graph, sitemap.xml, robots.txt)
+- [ ] Blog básico com MDX
+- [ ] Footer com links legais
+- [ ] Analytics (Plausible ou Vercel Analytics)
+
+## Semana 5: Pagamentos e Docker Prod
+- [ ] Integração Stripe (checkout)
+- [ ] Webhooks locais via Stripe CLI no Docker
+- [ ] Portal de billing
+- [ ] Controle de acesso por plano
+- [ ] Docker multi-stage build para produção
+- [ ] Healthchecks em todos os serviços
+
+## Semana 6: CI/CD e Deploy
+- [ ] GitHub Actions (lint, type-check, testes, build)
+- [ ] Deploy automático na Vercel
+- [ ] Guia de deploy na Vercel (documentado)
+- [ ] Guia de deploy em VPS com Docker (documentado)
+- [ ] SSL, reverse proxy, backups (guia)
+
+## Semana 7: Documentação e Polimento
+- [ ] Documentação completa (getting-started, architecture, deploy, decisions)
+- [ ] Troubleshooting guide
+- [ ] Changelog
+- [ ] Revisão de DX: testar o fluxo do zero em máquina limpa
+- [ ] Ajustes finais de UI/UX
+
+## Semana 8: Pré-Venda e Lançamento
+- [ ] Landing page de venda
+- [ ] Setup de pagamento (Stripe/Gumroad)
+- [ ] Lista de espera / Early Access a R$ 97
+- [ ] Coleta de feedback dos primeiros usuários
+- [ ] Ajustes rápidos baseados no feedback
+- [ ] Lançamento oficial a R$ 197–R$ 297
+
+---
+
+# Precificação
+
+## Filosofia de Precificação
+
+> **Não desvalorizar o produto por ser barato demais.**  
+> **Ser acessível ao público brasileiro, mas sinalizar qualidade.**
+
+O mercado global de starter kits varia de US$ 199 a US$ 1.499.  
+O mercado brasileiro tem poder aquisitivo menor, mas **valoriza qualidade documentada**.
+
+## Preços do Core
+
+| Tier | Preço | Público | O que inclui |
+|------|-------|---------|-------------|
+| **Early Access** | R$ 97 | Primeiros 20 compradores | Acesso vitalício + updates + Discord privado |
+| **Core Oficial** | R$ 197–R$ 297 | Lançamento | Acesso vitalício + updates + Discord privado |
+| **Core + Setup Assistido** | R$ 497 | Quem quer mão na roda | Core + 1h de consultoria para setup personalizado |
+
+> **Nota:** Preços em reais, sem conversão. Pagamento via PIX, boleto ou cartão (Stripe/Gumroad).
+
+## Regras de Precificação
+- Nunca descontar mais de 20% do preço oficial
+- Early Access é "preço de confiança", não "preço de liquidação"
+- Aumentar o preço conforme novas features são adicionadas
+- Oferecer upgrades gratuitos para early buyers
+
+---
+
+# Métricas de Sucesso
+
+## Fase 1 (Construção)
+- [ ] 100+ seguidores no LinkedIn engajados
+- [ ] 50+ stars no GitHub
+- [ ] 10+ comentários significativos por post
+- [ ] 5+ devs testando o Core em beta
+
+## Fase 2 (Pré-Venda)
+- [ ] 20 vendas Early Access a R$ 97 = R$ 1.940
+- [ ] Taxa de conversão da lista de espera > 10%
+- [ ] NPS dos early buyers > 7
+
+## Fase 3 (Lançamento)
+- [ ] 10+ vendas/mês a R$ 197+ = R$ 1.970+/mês
+- [ ] Taxa de reembolso < 5%
+- [ ] 3+ depoimentos de clientes reais
+- [ ] Pipeline de módulos Pro/Enterprise validado
+
+---
+
+# Regras Pessoais
+
+1. **Nunca desenvolver uma funcionalidade sem documentação.**
+2. **Nunca desenvolver uma funcionalidade sem pensar em reutilização.**
+3. **Nunca adicionar dependências desnecessárias.**
+4. **Sempre priorizar simplicidade sobre sofisticação.**
+5. **Sempre documentar decisões técnicas (o "por que").**
+6. **Sempre pensar em como transformar conhecimento em conteúdo.**
+7. **Sempre testar o fluxo do zero em máquina limpa antes de lançar.**
+
+---
+
+# Lembrete Final
+
+> O objetivo inicial não é construir o maior boilerplate do mundo.
+>
+> O objetivo é validar uma ideia, gerar renda, conseguir os primeiros clientes, aprender com eles e evoluir o produto continuamente.
+>
+> **Perfeição é inimiga do lançamento.**
+>
+> Sempre perguntar:
+> **"Isso ajuda alguém a lançar um SaaS mais rápido?"**
+>
+> Se a resposta for sim, vale a pena construir.
