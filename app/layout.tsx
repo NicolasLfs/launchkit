@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-
+import { Toaster } from "@/components/ui/toast";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -10,8 +10,13 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Launch Kit",
-  description: "Launch Kit is a platform for creating and launching products SaaS.",
+  title: "LaunchKit — SaaS pronto em 5 minutos",
+  description: "Starter kit com filosofia Docker First. Sobe auth, PostgreSQL, Stripe e landing page com um único comando. Documentado em português.",
+  openGraph: {
+    title: 'LaunchKit — SaaS pronto em 5 minutos',
+    description: 'Docker First starter kit para desenvolvedores brasileiros.',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
@@ -33,6 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange 
         >
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
