@@ -172,49 +172,49 @@ export default function DashboardPage() {
   const [isFirstVisit] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#fafafa] flex flex-col">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       {/* ── HEADER ── */}
-      <header className="sticky top-0 z-50 h-16 bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#262626] flex items-center px-4 gap-4">
+      <header className="sticky top-0 z-50 h-16 bg-background/90 backdrop-blur-md border-b border-border flex items-center px-4 gap-4">
         {/* Left */}
         <button
           onClick={() => setSidebarOpen(true)}
-          className="md:hidden text-[#a1a1aa] hover:text-white transition-colors"
+          className="md:hidden text-muted-foreground hover:text-foreground transition-colors"
         >
           <Menu size={24} />
         </button>
 
         <div className="flex items-center gap-2 shrink-0">
-          <Rocket size={16} className="text-emerald-500" />
-          <span className="text-white font-semibold text-lg tracking-tight">
+          <Rocket size={16} className="text-primary" />
+          <span className="text-foreground font-semibold text-lg tracking-tight">
             LaunchKit
           </span>
         </div>
 
-        <span className="hidden md:block border-l border-[#262626] h-6" />
-        <span className="hidden md:block text-[#a1a1aa] text-sm">
+        <span className="hidden md:block border-l border-border h-6" />
+        <span className="hidden md:block text-muted-foreground text-sm">
           Dashboard
         </span>
 
         {/* Right */}
         <div className="ml-auto flex items-center gap-2">
-          <div className="hidden md:flex items-center gap-2 bg-[#171717] border border-[#262626] rounded-md px-3 py-1.5 w-64">
-            <Search size={14} className="text-[#71717a] shrink-0" />
+          <div className="hidden md:flex items-center gap-2 bg-card border border-border rounded-md px-3 py-1.5 w-64">
+            <Search size={14} className="text-muted-foreground shrink-0" />
             <input
               type="text"
               placeholder="Buscar..."
-              className="bg-transparent text-sm text-[#a1a1aa] placeholder:text-[#71717a] outline-none w-full"
+              className="bg-transparent text-sm text-foreground placeholder:text-muted-foreground outline-none w-full"
             />
           </div>
 
-          <button className="relative p-2 text-[#a1a1aa] hover:text-white transition-colors rounded-md hover:bg-[#171717]">
+          <button className="relative p-2 text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-secondary">
             <Bell size={20} />
-            <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-red-500" />
+            <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-destructive" />
           </button>
 
          <ModeToggle />
 
-          <button className="flex items-center gap-2 p-1 rounded-full border border-[#404040] hover:border-[#71717a] transition-colors">
-            <div className="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xs font-semibold">
+          <button className="flex items-center gap-2 p-1 rounded-full border border-border hover:border-muted-foreground transition-colors">
+            <div className="w-7 h-7 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-xs font-semibold">
               U
             </div>
           </button>
@@ -234,7 +234,7 @@ export default function DashboardPage() {
         <aside
           className={`
             fixed md:sticky z-40 h-[calc(100vh-64px)]
-            w-60 bg-[#171717] border-r border-[#262626]
+            w-60 bg-card border-r border-border
             flex flex-col py-4 px-3 shrink-0
             transition-transform duration-200
             ${sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
@@ -242,7 +242,7 @@ export default function DashboardPage() {
         >
           <button
             onClick={() => setSidebarOpen(false)}
-            className="md:hidden absolute top-3 right-3 text-[#71717a] hover:text-white"
+            className="md:hidden absolute top-3 right-3 text-muted-foreground hover:text-foreground"
           >
             <X size={18} />
           </button>
@@ -250,7 +250,7 @@ export default function DashboardPage() {
           <nav className="flex-1 overflow-y-auto space-y-0">
             {navGroups.map((group) => (
               <div key={group.label}>
-                <p className="text-[#71717a] text-xs font-medium uppercase tracking-wider px-3 mt-6 mb-2">
+                <p className="text-muted-foreground text-xs font-medium uppercase tracking-wider px-3 mt-6 mb-2">
                   {group.label}
                 </p>
                 {group.items.map((item) => (
@@ -260,8 +260,8 @@ export default function DashboardPage() {
                       w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors relative
                       ${
                         item.active
-                          ? "bg-emerald-500/10 text-emerald-400 before:absolute before:right-0 before:top-1 before:bottom-1 before:w-0.5 before:bg-emerald-500 before:rounded-l"
-                          : "text-[#a1a1aa] hover:bg-[#262626] hover:text-white"
+                          ? "bg-primary/10 text-primary before:absolute before:right-0 before:top-1 before:bottom-1 before:w-0.5 before:bg-primary before:rounded-l"
+                          : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                       }
                     `}
                   >
@@ -277,20 +277,20 @@ export default function DashboardPage() {
           </nav>
 
           {/* User card */}
-          <div className="mt-4 pt-4 border-t border-[#262626]">
-            <div className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#262626] transition-colors cursor-pointer">
-              <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xs font-semibold shrink-0">
+          <div className="mt-4 pt-4 border-t border-border">
+            <div className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-secondary transition-colors cursor-pointer">
+              <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-xs font-semibold shrink-0">
                 U
               </div>
               <div className="min-w-0">
-                <p className="text-[#fafafa] text-sm font-medium truncate">
+                <p className="text-foreground text-sm font-medium truncate">
                   Usuário
                 </p>
-                <p className="text-[#71717a] text-xs truncate">
+                <p className="text-muted-foreground text-xs truncate">
                   user@launchkit.io
                 </p>
               </div>
-              <span className="ml-auto shrink-0 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-medium px-1.5 py-0.5 rounded">
+              <span className="ml-auto shrink-0 bg-primary/10 text-primary border border-primary/20 text-[10px] font-medium px-1.5 py-0.5 rounded">
                 Pro
               </span>
             </div>
@@ -306,14 +306,14 @@ export default function DashboardPage() {
               {/* Page header */}
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h1 className="text-white text-2xl font-semibold">
+                  <h1 className="text-foreground text-2xl font-semibold">
                     Dashboard
                   </h1>
-                  <p className="text-[#a1a1aa] text-sm mt-0.5">
+                  <p className="text-muted-foreground text-sm mt-0.5">
                     Visão geral do seu SaaS
                   </p>
                 </div>
-                <button className="shrink-0 flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-black text-sm font-medium px-4 py-2 rounded-md transition-colors">
+                <button className="shrink-0 flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium px-4 py-2 rounded-md transition-colors">
                   <Plus size={16} />
                   Novo Projeto
                 </button>
