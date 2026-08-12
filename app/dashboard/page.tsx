@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Rocket,
   Menu,
@@ -35,6 +36,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { ModeToggle } from "@/components/theme/toggle-theme";
+import { authClient } from "@/lib/auth-client";
 
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -168,8 +170,19 @@ function ChartTooltip({
 // ── Main component ─────────────────────────────────────────────────────────────
 
 export default function DashboardPage() {
+  const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isFirstVisit] = useState(false);
+
+  async function handleSignOut() {
+    await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/login");
+        },
+      },
+    });
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
@@ -278,7 +291,7 @@ export default function DashboardPage() {
 
           {/* User card */}
           <div className="mt-4 pt-4 border-t border-border">
-            <div className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-secondary transition-colors cursor-pointer">
+            <div className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-secondary transition-colors">
               <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary text-xs font-semibold shrink-0">
                 U
               </div>
@@ -290,7 +303,14 @@ export default function DashboardPage() {
                   user@launchkit.io
                 </p>
               </div>
-              <span className="ml-auto shrink-0 bg-primary/10 text-primary border border-primary/20 text-[10px] font-medium px-1.5 py-0.5 rounded">
+              <button
+                type="button"
+                onClick={handleSignOut}
+                className="ml-auto text-xs font-medium text-primary hover:text-primary/80"
+              >
+                Sign out
+              </button>
+              <span className="ml-3 shrink-0 bg-primary/10 text-primary border border-primary/20 text-[10px] font-medium px-1.5 py-0.5 rounded">
                 Pro
               </span>
             </div>

@@ -1,3 +1,7 @@
+"use client"
+
+import { FormEvent, useState } from "react"
+import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -16,11 +20,48 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
+import { authClient } from "@/lib/auth-client"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setError(null)
+    setIsLoading(true)
+
+    const formData = new FormData(e.currentTarget)
+    const email = String(formData.get("email") ?? "")
+    const password = String(formData.get("password") ?? "")
+
+    if (!email || !password) {
+      setError("Please provide both email and password.")
+      setIsLoading(false)
+      return
+    }
+
+    const { error: signInError } = await authClient.signIn.email({
+      email,
+      password,
+      rememberMe: true,
+      callbackURL: "/dashboard",
+    })
+
+    setIsLoading(false)
+
+    if (signInError) {
+      setError(signInError.message ?? "Unable to sign in. Please check your credentials.")
+      return
+    }
+
+    router.push("/dashboard")
+  }
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="bg-card border-border">
@@ -31,7 +72,7 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit}>
             <FieldGroup>
               <Field className="grid grid-cols-2 gap-4">
                 <Button variant="outline" type="button" className="flex items-center gap-2 border-border hover:bg-secondary">
@@ -60,6 +101,7 @@ export function LoginForm({
                 <FieldLabel htmlFor="email" className="text-foreground">Email</FieldLabel>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="m@example.com"
                   className="bg-background border-border focus:ring-primary"
@@ -76,10 +118,17 @@ export function LoginForm({
                     Forgot your password?
                   </Link>
                 </div>
-                <Input id="password" type="password" className="bg-background border-border focus:ring-primary" required />
+                <Input id="password" name="password" type="password" className="bg-background border-border focus:ring-primary" required />
               </Field>
+              {error ? (
+                <Field>
+                  <p className="text-sm text-destructive text-center">{error}</p>
+                </Field>
+              ) : null}
               <Field>
-                <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">Login</Button>
+                <Button type="submit" disabled={isLoading} className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                  {isLoading ? "Signing in..." : "Login"}
+                </Button>
                 <FieldDescription className="text-center text-sm text-muted-foreground mt-2">
                   Don&apos;t have an account? <Link href="/signup" className="text-primary hover:underline font-medium">Sign up</Link>
                 </FieldDescription>
