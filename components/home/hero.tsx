@@ -28,8 +28,8 @@ export default function Hero() {
         className="text-[#a1a1aa] max-w-[560px] mx-auto mt-4 leading-relaxed"
         style={{ fontSize: "clamp(16px, 2vw, 18px)" }}
       >
-        LaunchKit sobe auth, PostgreSQL, Stripe e landing page com um único
-        comando. Documentado em português, pronto para produção.
+        LaunchKit: dev com docker compose (local), produção com CI/CD via GitHub
+        Actions. Auth, PostgreSQL, Stripe, landing page. Documentado em português.
       </p>
 
       {/* CTA Group */}
@@ -72,7 +72,7 @@ export default function Hero() {
           </div>
           <div>
             <span className="text-emerald-500">$ </span>
-            <span className="text-white">docker compose up</span>
+            <span className="text-white">docker compose up -d</span>
           </div>
           <div className="mt-2" />
           <div>
@@ -81,18 +81,18 @@ export default function Hero() {
           </div>
           <div>
             <span className="text-emerald-500"> ✓ </span>
-            <span className="text-[#a1a1aa]">Auth service ready</span>
+            <span className="text-[#a1a1aa]">Stripe webhook listener active</span>
           </div>
+          <div className="mt-2" />
+          <div>
+            <span className="text-emerald-500">$ </span>
+            <span className="text-white">pnpm dev</span>
+          </div>
+          <div className="mt-2" />
           <div>
             <span className="text-emerald-500"> ✓ </span>
             <span className="text-[#a1a1aa]">
-              Next.js dev server on localhost:3000
-            </span>
-          </div>
-          <div>
-            <span className="text-emerald-500"> ✓ </span>
-            <span className="text-[#a1a1aa]">
-              Stripe webhook listener active
+              Next.js dev server ready on localhost:3000
             </span>
           </div>
           <div className="mt-2" />

@@ -4,9 +4,9 @@ export default function Features() {
   const features = [
     {
       icon: Container,
-      title: "Docker Compose",
+      title: "Docker First",
       description:
-        "Um comando sobe tudo: app, banco, auth, Stripe. Dev e produção com o mesmo arquivo.",
+        "Desenvolvimento com docker compose (PostgreSQL, auth, Stripe CLI). Produção com CI/CD via GitHub Actions e Dockerfile.",
     },
     {
       icon: Lock,
