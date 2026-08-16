@@ -248,9 +248,9 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ## 📞 Suporte
 
-- **Issues**: [GitHub Issues](https://github.com/seu-user/launchkit-core/issues)
+- **Issues**: [GitHub Issues](https://github.com/NicolasLfs/launchkit/issues)
 - **Documentação**: Veja pasta `/docs`
-- **Email**: contato@seudominio.com
+- **Email**: nicolaslopes03@hotmail.com
 
 ---
 
