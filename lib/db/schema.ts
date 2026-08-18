@@ -74,10 +74,6 @@ export const verification = pgTable(
   (table) => [index("verification_identifier_idx").on(table.identifier)],
 );
 
-export const userRelations = relations(user, ({ many }) => ({
-  sessions: many(session),
-  accounts: many(account),
-}));
 
 export const sessionRelations = relations(session, ({ one }) => ({
   user: one(user, {
@@ -91,4 +87,72 @@ export const accountRelations = relations(account, ({ one }) => ({
     fields: [account.userId],
     references: [user.id],
   }),
+}));
+
+export const stripeCustomer = pgTable(
+  "stripe_customer",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .unique()
+      .references(() => user.id, { onDelete: "cascade" }),
+    stripeCustomerId: text("stripe_customer_id").notNull().unique(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow()
+      .$onUpdate(() => new Date())
+      .notNull(),
+  },
+  (table) => [index("stripe_customer_userId_idx").on(table.userId)],
+);
+
+export const subscription = pgTable(
+  "subscription",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    stripeSubscriptionId: text("stripe_subscription_id").notNull().unique(),
+    stripeCustomerId: text("stripe_customer_id").notNull(),
+    stripePriceId: text("stripe_price_id").notNull(),
+    status: text("status").notNull(),
+    plan: text("plan").notNull(),
+    planName: text("plan_name").notNull(),
+    currentPeriodStart: timestamp("current_period_start"),
+    currentPeriodEnd: timestamp("current_period_end"),
+    cancelAtPeriodEnd: boolean("cancel_at_period_end").default(false).notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow()
+      .$onUpdate(() => new Date())
+      .notNull(),
+  },
+  (table) => [
+    index("subscription_userId_idx").on(table.userId),
+    index("subscription_stripeCustomerId_idx").on(table.stripeCustomerId),
+    index("subscription_status_idx").on(table.status),
+  ],
+);
+
+export const stripeCustomerRelations = relations(stripeCustomer, ({ one }) => ({
+  user: one(user, {
+    fields: [stripeCustomer.userId],
+    references: [user.id],
+  }),
+}));
+
+export const subscriptionRelations = relations(subscription, ({ one }) => ({
+  user: one(user, {
+    fields: [subscription.userId],
+    references: [user.id],
+  }),
+}));
+
+export const userStripeRelations = relations(user, ({ many, one }) => ({
+  sessions: many(session),
+  accounts: many(account),
+  stripeCustomer: one(stripeCustomer),
+  subscriptions: many(subscription),
 }));

@@ -13,6 +13,12 @@ export function Header() {
         </Link>
         <nav className="flex items-center gap-1">
           <Link
+            href="/pricing"
+            className="text-muted-foreground hover:text-foreground text-sm font-medium px-3 py-2 rounded-md transition-colors"
+          >
+            Planos
+          </Link>
+          <Link
             href="/login"
             className="text-muted-foreground hover:text-foreground text-sm font-medium px-3 py-2 rounded-md transition-colors"
           >
